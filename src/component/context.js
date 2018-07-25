@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { connect } from './my-redux';
 class Context extends Component {
   constructor(prop) {
     super(prop);
@@ -7,16 +7,19 @@ class Context extends Component {
 
   render() {
     return (
-      <div style={{color: this.props.color}}>
-        { this.props.text }
+      <div style={{color: this.props.themeColor}}>
+        { this.props.content }
       </div>
     )
   }
 }
 
-Context.defaultProps = {
-  color: 'blue',
-  text: 'React Context'
+const mapStateToProps = (state) => {
+  return {
+    themeColor: state.themeColor,
+    content: state.content
+  }
 }
+Context = connect(mapStateToProps, Context)
 
 export default Context;

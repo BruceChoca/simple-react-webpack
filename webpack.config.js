@@ -40,6 +40,9 @@ module.exports = {
       
     ]
   },
+  externals: { // 外部链接lodash
+    lodash: 'lodash'
+  },
   optimization: {   // 打包公共的组件，原版本new webpack.optimize.CommonsChunkPlugin，新版本替换
     runtimeChunk: {
         name: "manifest"
@@ -76,7 +79,7 @@ module.exports = {
         path: 'babel-loader',
         query: {
           cacheDirectory: '.webpack_cache', // babel缓存
-          presets: [ 'es2015','react' ]
+          presets: [ 'stage-3','react' ]
         }
       }]
     }),

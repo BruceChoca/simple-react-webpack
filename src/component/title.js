@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { connect } from './my-redux';
 class Title extends Component {
   constructor(prop) {
     super(prop);
@@ -7,17 +7,19 @@ class Title extends Component {
 
   render() {
     return (
-      <div style={{color: this.props.color}}>
-        { this.props.text }
+      <div style={{color: this.props.themeColor}}>
+        { this.props.title }
       </div>
     )
   }
 }
 
-
-Title.defaultProps = {
-  color: 'red',
-  text: 'React Title1'
+const mapStateToProps = (state) => {
+  return {
+    themeColor: state.themeColor,
+    title: state.title
+  }
 }
+Title = connect(mapStateToProps, Title)
 
 export default Title;
