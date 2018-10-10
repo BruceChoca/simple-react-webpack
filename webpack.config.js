@@ -34,10 +34,10 @@ module.exports = {
       //   }
       // },
       {
-          test: /\.(png|jpg)$/,
-          loader: 'url-loader?limit=8192'
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader?limit=8192'
       },
-      
+
     ]
   },
   externals: { // 外部链接lodash
@@ -45,16 +45,16 @@ module.exports = {
   },
   optimization: {   // 打包公共的组件，原版本new webpack.optimize.CommonsChunkPlugin，新版本替换
     runtimeChunk: {
-        name: "manifest"
+      name: "manifest"
     },
     splitChunks: {
-        cacheGroups: {
-            commons: {
-                test: /[\\/]node_modules[\\/]/,
-                name: "vendor",
-                chunks: "all"
-            }
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "all"
         }
+      }
     }
   },
   plugins: [
@@ -79,13 +79,13 @@ module.exports = {
         path: 'babel-loader',
         query: {
           cacheDirectory: '.webpack_cache', // babel缓存
-          presets: [ 'stage-3','react' ]
+          presets: ['stage-3', 'react']
         }
       }]
     }),
     new HtmlWebpackPlugin({       // html输出插件
-        template: './index.html', //指定模板路径
-        filename: 'index.html', //指定文件名
+      template: './index.html', //指定模板路径
+      filename: 'index.html', //指定文件名
     })
   ],
   devServer: {

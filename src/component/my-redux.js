@@ -31,7 +31,7 @@ export function createStore(reducer) {
   const listeners = [];
   const getState = () => state;
   const subscribe = (listener) => { listeners.push(listener); };
-  const dispatch = (action) => { 
+  const dispatch = (action) => {
     state = reducer(state, action) // 覆盖原对象
     listeners.forEach(l => l());
   };
@@ -60,19 +60,19 @@ export function createStore(reducer) {
 export var connect = (mapStateToProps, WrappedComponent) => {
   class Connect extends Component {
     // TODO: 如何从 store 取数据？
-    constructor (props) {
+    constructor(props) {
       super(props)
       this.state = { allProps: {} }
     }
 
-    componentWillMount () {
+    UNSAFE_componentWillMount() {
       const { store } = this.context
       this._updateProps()
       store.subscribe(() => this._updateProps())
     }
 
     // 更新渲染 参数存入state
-    _updateProps () {
+    _updateProps() {
       const { store } = this.context
       let stateProps = mapStateToProps(store.getState(), this.props) // 额外传入 props，让获取数据更加灵活方便
       this.setState({
@@ -84,7 +84,7 @@ export var connect = (mapStateToProps, WrappedComponent) => {
       })
     }
 
-    render () {
+    render() {
       return <WrappedComponent {...this.state.allProps} />; // 通过props赋值
     }
   }
@@ -97,13 +97,13 @@ export var connect = (mapStateToProps, WrappedComponent) => {
 }
 
 export class Provider extends Component {
-  getChildContext () {
+  getChildContext() {
     return {
       store: this.props.store
     }
   }
 
-  render () {
+  render() {
     return (
       <div>{this.props.children}</div>
     )

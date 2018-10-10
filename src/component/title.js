@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from './my-redux';
 class Title extends Component {
-  constructor(prop) {
-    super(prop);
-  }
 
   render() {
     return (
-      <div style={{color: this.props.themeColor}}>
-        { this.props.title }
+      <div style={{ color: this.props.themeColor }}>
+        {this.props.title}
       </div>
     )
   }

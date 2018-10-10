@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from './my-redux';
 class Context extends Component {
-  constructor(prop) {
-    super(prop);
-  }
 
   render() {
     return (
-      <div style={{color: this.props.themeColor}}>
-        { this.props.content }
+      <div style={{ color: this.props.themeColor }}>
+        {this.props.content}
       </div>
     )
   }

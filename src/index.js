@@ -8,8 +8,8 @@ import { Provider, createStore, connect } from './component/my-redux';
 const themeReducer = (state, action) => {
   if (!state) return {
     themeColor: 'red',
-    content: 'React Content',
-    title: 'React Title' 
+    content: 'React Content1',
+    title: 'React Title'
   }
   switch (action.type) {
     case 'CHANGE_COLOR':
@@ -21,9 +21,6 @@ const themeReducer = (state, action) => {
 const store = createStore(themeReducer);
 
 class Home extends Component {
-  constructor(prop) {
-    super(prop);
-  }
 
   componentDidMount() {
     this.props.dispatch({ type: 'CHANGE_COLOR', themeColor: 'blue' });
@@ -32,8 +29,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Title/>
-        <Context/>
+        <Title />
+        <Context />
       </div>
     );
   }
